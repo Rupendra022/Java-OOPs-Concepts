@@ -1,0 +1,162 @@
+class BankAccount {
+
+    // Private data members
+    private String accountNumber;
+    private String holderName;
+    private double balance;
+    private int pin;
+
+
+    // Constructor
+    public BankAccount(String accountNumber,
+                       String holderName,
+                       double balance,
+                       int pin) {
+
+        this.accountNumber = accountNumber;
+        this.holderName = holderName;
+        this.balance = balance;
+        this.pin = pin;
+    }
+
+
+    // Deposit money
+    public void deposit(double amount) {
+
+        if(amount > 0) {
+
+            balance += amount;
+            System.out.println("Deposit successful");
+
+        } else {
+
+            System.out.println("Invalid deposit amount");
+        }
+    }
+
+
+    // Withdraw money with PIN verification
+    public void withdraw(double amount, int enteredPin) {
+
+
+        if(!verifyPin(enteredPin)) {
+
+            System.out.println("Incorrect PIN");
+            return;
+        }
+
+
+        if(amount <= 0) {
+
+            System.out.println("Invalid withdrawal amount");
+
+        }
+        else if(amount > balance) {
+
+            System.out.println("Insufficient balance");
+
+        }
+        else {
+
+            balance -= amount;
+            System.out.println("Withdrawal successful");
+        }
+    }
+
+
+    // Change PIN
+    public void changePin(int oldPin, int newPin) {
+
+
+        if(verifyPin(oldPin)) {
+
+            pin = newPin;
+            System.out.println("PIN changed successfully");
+
+        }
+        else {
+
+            System.out.println("Incorrect old PIN");
+        }
+    }
+
+
+    // Verify PIN
+    private boolean verifyPin(int enteredPin) {
+
+        return this.pin == enteredPin;
+
+    }
+
+
+    // Controlled access to balance
+    public double getBalance() {
+
+        return balance;
+
+    }
+
+
+    // Display account details
+    public void displayAccountDetails() {
+
+
+        System.out.println("Account Number : " + accountNumber);
+        System.out.println("Holder Name : " + holderName);
+        System.out.println("Balance : " + balance);
+
+        // PIN is not displayed
+
+    }
+}
+
+
+
+public class ATMSystem {
+
+
+    public static void main(String[] args) {
+
+
+        BankAccount account1 = new BankAccount(
+                "ACC101",
+                "Rahul",
+                50000,
+                1234
+        );
+
+
+        BankAccount account2 = new BankAccount(
+                "ACC102",
+                "Amit",
+                80000,
+                5678
+        );
+
+
+        System.out.println("Before Transaction");
+
+        account1.displayAccountDetails();
+
+
+        System.out.println();
+
+
+        account1.deposit(5000);
+
+
+        account1.withdraw(10000,1234);
+
+
+        account1.changePin(1234,9999);
+
+
+        System.out.println();
+
+
+        System.out.println("After Transaction");
+
+        account1.displayAccountDetails();
+
+    }
+}
