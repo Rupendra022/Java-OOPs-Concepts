@@ -1,0 +1,67 @@
+class Order {
+
+    private int orderId;
+    private String customerName;
+    private String productName;
+    private double price;
+    private String status;
+
+
+    // Default Constructor
+    Order(){
+
+        orderId = 0;
+        customerName = "Unknown";
+        productName = "Not Available";
+        price = 0;
+        status = "Pending";
+
+    }
+
+
+    // Parameterized Constructor
+    Order(int orderId, String customerName,
+          String productName, double price,
+          String status){
+
+
+        this.orderId = orderId;
+        this.customerName = customerName;
+        this.productName = productName;
+        this.price = price;
+        this.status = status;
+
+    }
+
+
+    void displayOrderDetails(){
+
+        System.out.println("Order ID : " + orderId);
+        System.out.println("Customer : " + customerName);
+        System.out.println("Product : " + productName);
+        System.out.println("Price : " + price);
+        System.out.println("Status : " + status);
+
+    }
+
+}
+
+
+public class OrderManagementSystem {
+
+    public static void main(String[] args) {
+
+
+        Order order = new Order(
+                101,
+                "Rahul",
+                "Laptop",
+                75000,
+                "Confirmed"
+        );
+
+
+        order.displayOrderDetails();
+
+    }
+}
