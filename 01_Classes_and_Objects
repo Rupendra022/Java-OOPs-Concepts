@@ -1,0 +1,61 @@
+class BankAccount {
+
+    private int accountNumber;
+    private String accountHolderName;
+    private String accountType;
+    private double balance;
+
+    BankAccount(int accountNumber, String accountHolderName,
+                String accountType, double balance){
+
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+
+
+    void deposit(double amount){
+        balance += amount;
+    }
+
+
+    void withdraw(double amount){
+
+        if(amount <= balance){
+            balance -= amount;
+            System.out.println("Withdrawal successful");
+        }
+        else{
+            System.out.println("Insufficient balance");
+        }
+    }
+
+
+    void displayAccountDetails(){
+
+        System.out.println("Account : " + accountNumber);
+        System.out.println("Holder : " + accountHolderName);
+        System.out.println("Type : " + accountType);
+        System.out.println("Balance : " + balance);
+    }
+}
+
+
+class Main{
+
+    public static void main(String[] args){
+
+        BankAccount a1 = new BankAccount(
+                1,
+                "Ashu",
+                "Savings",
+                5000
+        );
+
+        a1.deposit(2000);
+        a1.withdraw(1000);
+
+        a1.displayAccountDetails();
+    }
+}
