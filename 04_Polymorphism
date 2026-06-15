@@ -1,0 +1,73 @@
+
+The same method can perform different actions based on the payment type.
+
+---
+
+# Types of Polymorphism in Java
+
+Java supports two types of polymorphism:
+
+## 1. Compile-Time Polymorphism
+
+Also known as:
+
+Method Overloading
+
+The compiler decides which method should execute.
+
+It happens when:
+
+- Same method name
+- Different parameters
+
+
+Example:
+
+```java
+class Calculator {
+
+    int add(int a,int b){
+        return a+b;
+    }
+
+
+    int add(int a,int b,int c){
+        return a+b+c;
+    }
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Runtime Polymorphism
+
+Also known as:
+
+Method Overriding
+
+The decision of which method to call happens during runtime.
+
+It occurs when a child class provides its own implementation of a parent method.
+
+Example:
+
+class Animal {
+
+    void sound(){
+
+        System.out.println("Animal sound");
+
+    }
+
+}
+
+
+class Dog extends Animal {
+
+    @Override
+    void sound(){
+
+        System.out.println("Bark");
+
+    }
+
+}
